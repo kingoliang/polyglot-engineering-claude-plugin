@@ -2,7 +2,9 @@
   "name": "polyglot-engineering",
   "version": "1.0.0",
   "description": "Multi-language engineering plugin for TypeScript, Python, and Java projects with comprehensive documentation generation capabilities",
-  "author": "Claude Plugin",
+  "author": {
+    "name": "Kingo Liang"
+  },
   "license": "MIT",
   "keywords": [
     "typescript",
@@ -15,47 +17,33 @@
     "uml"
   ],
   "commands": [
-    "plan",
-    "work",
-    "review",
-    "docs",
-    "triage"
+    "./commands/plan.md",
+    "./commands/work.md",
+    "./commands/review.md",
+    "./commands/docs.md",
+    "./commands/triage.md"
   ],
-  "agents": {
-    "review": [
-      "typescript-reviewer",
-      "python-reviewer",
-      "java-reviewer",
-      "architecture-strategist",
-      "security-sentinel",
-      "performance-oracle",
-      "code-simplicity-reviewer"
-    ],
-    "research": [
-      "codebase-researcher",
-      "framework-researcher"
-    ],
-    "docs": [
-      "architecture-doc-generator",
-      "api-doc-generator",
-      "uml-generator",
-      "readme-generator",
-      "manual-generator"
-    ],
-    "workflow": [
-      "plan-executor",
-      "review-coordinator"
-    ]
-  },
+  "agents": [
+    "./agents/review/typescript-reviewer.md",
+    "./agents/review/python-reviewer.md",
+    "./agents/review/java-reviewer.md",
+    "./agents/review/architecture-strategist.md",
+    "./agents/review/security-sentinel.md",
+    "./agents/review/performance-oracle.md",
+    "./agents/review/code-simplicity-reviewer.md",
+    "./agents/research/codebase-researcher.md",
+    "./agents/research/framework-researcher.md",
+    "./agents/docs/architecture-doc-generator.md",
+    "./agents/docs/api-doc-generator.md",
+    "./agents/docs/uml-generator.md",
+    "./agents/docs/readme-generator.md",
+    "./agents/docs/manual-generator.md",
+    "./agents/workflow/plan-executor.md",
+    "./agents/workflow/review-coordinator.md"
+  ],
   "skills": [
-    "docs-generator",
-    "code-analysis",
-    "uml-generator"
-  ],
-  "supportedLanguages": [
-    "typescript",
-    "javascript",
-    "python",
-    "java"
+    "./skills/docs-generator",
+    "./skills/code-analysis",
+    "./skills/uml-generator"
   ]
 }
