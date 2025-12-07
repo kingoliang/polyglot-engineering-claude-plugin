@@ -68,29 +68,60 @@ Polyglot Engineering Plugin 是一个全面的 Claude Code 插件，支持 TypeS
 - Git 已配置
 - 项目使用 TypeScript、Python 或 Java
 
-### 安装步骤
+### 安装方式
+
+#### 方式一：添加 Marketplace（推荐）
+
+在 Claude Code 中执行：
 
 ```bash
-# 克隆插件到 Claude Code 插件目录
-git clone <repository-url> ~/.claude/plugins/polyglot-engineering
+# 添加此仓库作为 marketplace
+/plugin marketplace add kingoliang/polyglot-engineering-claude-plugin
 
-# 验证安装
-claude --list-plugins
+# 安装插件
+/plugin install polyglot-engineering@kingoliang
 ```
 
-### 项目配置
+#### 方式二：交互式安装
 
-在项目根目录创建 `.claude/config.json`（可选）：
+```bash
+# 打开插件浏览器
+/plugin
+
+# 选择 "Browse Plugins"，找到 polyglot-engineering 并安装
+```
+
+#### 方式三：团队配置（自动安装）
+
+在项目的 `.claude/settings.json` 中添加：
 
 ```json
 {
-  "plugins": ["polyglot-engineering"],
-  "polyglot": {
-    "defaultLanguage": "typescript",
-    "reviewDepth": "standard",
-    "docsOutput": "docs/"
-  }
+  "marketplaces": ["kingoliang/polyglot-engineering-claude-plugin"],
+  "plugins": ["polyglot-engineering@kingoliang"]
 }
+```
+
+当团队成员信任该仓库后，插件会自动安装。
+
+### 验证安装
+
+```bash
+# 查看可用命令
+/help
+
+# 查看已安装插件
+/plugin
+```
+
+### 卸载插件
+
+```bash
+# 禁用插件（保留配置）
+/plugin disable polyglot-engineering@kingoliang
+
+# 完全卸载
+/plugin uninstall polyglot-engineering@kingoliang
 ```
 
 ---

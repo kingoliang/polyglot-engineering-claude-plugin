@@ -18,9 +18,46 @@ A comprehensive Claude Code plugin for TypeScript, Python, and Java projects imp
 
 ### Installation
 
+#### Method 1: Add as Marketplace (Recommended)
+
 ```bash
-# Clone the plugin to your Claude Code plugins directory
-git clone https://github.com/your-repo/polyglot-engineering ~/.claude/plugins/polyglot-engineering
+# In Claude Code, add this repository as a marketplace
+/plugin marketplace add kingoliang/polyglot-engineering-claude-plugin
+
+# Install the plugin
+/plugin install polyglot-engineering@kingoliang
+```
+
+#### Method 2: Interactive Installation
+
+```bash
+# Open plugin browser
+/plugin
+
+# Select "Browse Plugins" and find polyglot-engineering
+```
+
+#### Method 3: Team Configuration
+
+Add to your project's `.claude/settings.json`:
+
+```json
+{
+  "marketplaces": ["kingoliang/polyglot-engineering-claude-plugin"],
+  "plugins": ["polyglot-engineering@kingoliang"]
+}
+```
+
+When team members trust the repository, the plugin installs automatically.
+
+### Verify Installation
+
+```bash
+# Check available commands
+/help
+
+# View installed plugins
+/plugin
 ```
 
 ### Usage

@@ -1,0 +1,13 @@
+{
+  "name": "kingoliang",
+  "owner": {
+    "name": "Kingo Liang"
+  },
+  "plugins": [
+    {
+      "name": "polyglot-engineering",
+      "source": ".",
+      "description": "Multi-language engineering plugin for TypeScript, Python, and Java projects with comprehensive code review, documentation generation, and plan-based development workflow"
+    }
+  ]
+}
