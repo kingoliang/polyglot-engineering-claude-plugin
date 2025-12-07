@@ -1,0 +1,61 @@
+{
+  "name": "polyglot-engineering",
+  "version": "1.0.0",
+  "description": "Multi-language engineering plugin for TypeScript, Python, and Java projects with comprehensive documentation generation capabilities",
+  "author": "Claude Plugin",
+  "license": "MIT",
+  "keywords": [
+    "typescript",
+    "python",
+    "java",
+    "code-review",
+    "documentation",
+    "architecture",
+    "api-docs",
+    "uml"
+  ],
+  "commands": [
+    "plan",
+    "work",
+    "review",
+    "docs",
+    "triage"
+  ],
+  "agents": {
+    "review": [
+      "typescript-reviewer",
+      "python-reviewer",
+      "java-reviewer",
+      "architecture-strategist",
+      "security-sentinel",
+      "performance-oracle",
+      "code-simplicity-reviewer"
+    ],
+    "research": [
+      "codebase-researcher",
+      "framework-researcher"
+    ],
+    "docs": [
+      "architecture-doc-generator",
+      "api-doc-generator",
+      "uml-generator",
+      "readme-generator",
+      "manual-generator"
+    ],
+    "workflow": [
+      "plan-executor",
+      "review-coordinator"
+    ]
+  },
+  "skills": [
+    "docs-generator",
+    "code-analysis",
+    "uml-generator"
+  ],
+  "supportedLanguages": [
+    "typescript",
+    "javascript",
+    "python",
+    "java"
+  ]
+}
