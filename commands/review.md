@@ -1,112 +1,112 @@
-# /polyglot:review Command
+# /polyglot:review 命令
 
-Perform comprehensive multi-agent code review with language-specific and cross-cutting analysis.
+执行全面的多代理代码审查，包含语言特定和横切关注点分析。
 
-## Usage
+## 用法
 
 ```
-/polyglot:review [target]
+/polyglot:review [目标]
 ```
 
-### Targets
-- `staged` - Review staged changes
-- `branch` - Review current branch vs main
-- `pr #123` - Review specific PR
-- `files path/to/file.ts` - Review specific files
-- `commit abc123` - Review specific commit
+### 目标类型
+- `staged` - 审查暂存的变更
+- `branch` - 审查当前分支 vs main
+- `pr #123` - 审查指定 PR
+- `files path/to/file.ts` - 审查指定文件
+- `commit abc123` - 审查指定提交
 
-## Process
+## 流程
 
-### Phase 1: Analysis
+### 阶段1：分析
 
-1. **Change Detection**
+1. **变更检测**
    ```bash
-   # Determine what to review
+   # 确定审查内容
    git diff --name-only [target]
    ```
 
-2. **Language Classification**
-   - Identify file types
-   - Group by language
-   - Note mixed-language changes
+2. **语言分类**
+   - 识别文件类型
+   - 按语言分组
+   - 标注混合语言变更
 
-3. **Change Scope Assessment**
-   - New files vs modifications
-   - Lines added/removed
-   - Affected components
+3. **变更范围评估**
+   - 新文件 vs 修改
+   - 添加/删除的行数
+   - 受影响的组件
 
-### Phase 2: Agent Engagement
+### 阶段2：代理调用
 
-Based on changes, invoke appropriate agents:
+根据变更调用相应代理：
 
-| Files Changed | Agents Invoked |
-|--------------|----------------|
-| *.ts, *.tsx  | typescript-reviewer |
-| *.py         | python-reviewer |
-| *.java       | java-reviewer |
-| API routes   | architecture-strategist, security-sentinel |
-| Database     | performance-oracle, security-sentinel |
-| Auth code    | security-sentinel |
-| All changes  | code-simplicity-reviewer |
+| 变更文件 | 调用的代理 |
+|----------|-----------|
+| *.ts, *.tsx | typescript-reviewer |
+| *.py | python-reviewer |
+| *.java | java-reviewer |
+| API 路由 | architecture-strategist, security-sentinel |
+| 数据库 | performance-oracle, security-sentinel |
+| 认证代码 | security-sentinel |
+| 所有变更 | code-simplicity-reviewer |
 
-### Phase 3: Review Execution
+### 阶段3：执行审查
 
-Each agent reviews and reports:
-1. Security issues
-2. Performance concerns
-3. Code quality issues
-4. Best practice violations
-5. Improvement suggestions
+每个代理审查并报告：
+1. 安全问题
+2. 性能关注
+3. 代码质量问题
+4. 最佳实践违反
+5. 改进建议
 
-### Phase 4: Synthesis
+### 阶段4：综合
 
-The `review-coordinator` agent:
-1. Collects all findings
-2. Removes duplicates
-3. Assigns priorities
-4. Creates unified report
+`review-coordinator` 代理：
+1. 收集所有发现
+2. 去除重复
+3. 分配优先级
+4. 创建统一报告
 
-## Output Format
+## 输出格式
 
 ```markdown
-# Code Review Report
+# 代码审查报告
 
-**Target**: [What was reviewed]
-**Branch**: [Branch name]
-**Reviewers**: [List of agents used]
-**Date**: [Review date]
-
----
-
-## Summary
-
-| Severity | Count |
-|----------|-------|
-| Critical | 0     |
-| High     | 2     |
-| Medium   | 5     |
-| Low      | 3     |
-
-**Verdict**: [APPROVED / NEEDS CHANGES / BLOCKED]
+**目标**：[审查的内容]
+**分支**：[分支名称]
+**审查代理**：[使用的代理列表]
+**日期**：[审查日期]
 
 ---
 
-## Critical Issues
-*Must be fixed before merge*
+## 摘要
 
-None found.
+| 严重程度 | 数量 |
+|----------|------|
+| 严重 | 0 |
+| 高 | 2 |
+| 中 | 5 |
+| 低 | 3 |
+
+**结论**：[通过 / 需要修改 / 阻塞]
 
 ---
 
-## High Priority Issues
-*Should be fixed*
+## 严重问题
+*必须在合并前修复*
 
-### [H1] Missing Error Handling
-**File**: `src/api/users.ts:45`
-**Agent**: typescript-reviewer
-**Issue**: Async function lacks try-catch block
+无
 
-**Current**:
+---
+
+## 高优先级问题
+*应该修复*
+
+### [H1] 缺少错误处理
+**文件**：`src/api/users.ts:45`
+**代理**：typescript-reviewer
+**问题**：异步函数缺少 try-catch
+
+**当前代码**：
 ```typescript
 async function getUser(id: string) {
   const user = await db.users.find(id);
@@ -114,15 +114,15 @@ async function getUser(id: string) {
 }
 ```
 
-**Suggested**:
+**建议修复**：
 ```typescript
 async function getUser(id: string) {
   try {
     const user = await db.users.find(id);
-    if (!user) throw new NotFoundError('User not found');
+    if (!user) throw new NotFoundError('用户不存在');
     return user;
   } catch (error) {
-    logger.error('Failed to get user', { id, error });
+    logger.error('获取用户失败', { id, error });
     throw error;
   }
 }
@@ -130,87 +130,87 @@ async function getUser(id: string) {
 
 ---
 
-## Medium Priority Issues
-*Consider fixing*
+## 中优先级问题
+*考虑修复*
 
-### [M1] N+1 Query Pattern
+### [M1] N+1 查询模式
 ...
 
 ---
 
-## Low Priority Issues
-*Nice to have*
+## 低优先级问题
+*可选改进*
 
-### [L1] Consider Using Record Type
+### [L1] 考虑使用 Record 类型
 ...
 
 ---
 
-## Positive Observations
+## 正面观察
 
-- Good test coverage for new authentication logic
-- Clean separation of concerns in service layer
-- Proper use of TypeScript generics
-
----
-
-## Files Reviewed
-
-| File | Issues | Status |
-|------|--------|--------|
-| src/api/users.ts | 2 | Needs Changes |
-| src/services/auth.ts | 0 | Approved |
-| tests/auth.test.ts | 1 | Minor Issues |
+- 新认证逻辑测试覆盖良好
+- 服务层关注点分离清晰
+- TypeScript 泛型使用正确
 
 ---
 
-## Action Items
+## 审查的文件
 
-1. [ ] Fix error handling in `users.ts:45`
-2. [ ] Address N+1 query in `users.ts:78`
-3. [ ] Consider record type suggestion
+| 文件 | 问题数 | 状态 |
+|------|--------|------|
+| src/api/users.ts | 2 | 需要修改 |
+| src/services/auth.ts | 0 | 通过 |
+| tests/auth.test.ts | 1 | 小问题 |
+
+---
+
+## 行动项目
+
+1. [ ] 修复 `users.ts:45` 的错误处理
+2. [ ] 解决 `users.ts:78` 的 N+1 查询
+3. [ ] 考虑 Record 类型建议
 ```
 
-## Review Depth Levels
+## 审查深度
 
-### Quick Review
-- Syntax and type issues only
-- Fast, for small changes
+### 快速审查
+- 仅语法和类型问题
+- 适用于小变更
 
 ```
 /polyglot:review staged --quick
 ```
 
-### Standard Review (Default)
-- All language-specific checks
-- Security for sensitive areas
-- Performance for data operations
+### 标准审查（默认）
+- 所有语言特定检查
+- 敏感区域安全检查
+- 数据操作性能检查
 
 ```
 /polyglot:review branch
 ```
 
-### Deep Review
-- All agents engaged
-- Architecture review included
-- Comprehensive security scan
+### 深度审查
+- 所有代理参与
+- 架构审查
+- 全面安全扫描
 
 ```
 /polyglot:review pr #123 --deep
 ```
 
-## Integration with Triage
+## 与 Triage 集成
 
-After review, use:
+审查后使用：
 ```
 /polyglot:triage
 ```
 
-To interactively address findings with auto-fix suggestions.
+交互式处理发现的问题，支持自动修复建议。
 
-## Best Practices
+## 最佳实践
 
-1. **Review Early**: Review before large commits
-2. **Review Often**: Smaller reviews are more effective
-3. **Address Criticals**: Never merge with critical issues
-4. **Learn from Findings**: Use patterns to prevent future issues
+1. **尽早审查**：在大提交前审查
+2. **频繁审查**：小审查更有效
+3. **处理严重问题**：永不带严重问题合并
+4. **从发现中学习**：使用模式预防未来问题

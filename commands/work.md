@@ -1,55 +1,55 @@
-# /polyglot:work Command
+# /polyglot:work 命令
 
-Execute implementation plans systematically using isolated git worktrees with continuous quality verification.
+使用隔离的 git worktree 系统执行实施计划，持续进行质量验证。
 
-## Usage
+## 用法
 
 ```
-/polyglot:work [plan reference or inline instructions]
+/polyglot:work [计划引用或内联指令]
 ```
 
-## Process
+## 流程
 
-### Phase 1: Setup
+### 阶段1：准备
 
-1. **Plan Loading**
-   - Load the specified plan
-   - Verify all tasks are clear
-   - Check for blocking dependencies
+1. **加载计划**
+   - 加载指定的计划
+   - 验证所有任务清晰
+   - 检查阻塞依赖
 
-2. **Environment Preparation**
+2. **环境准备**
    ```bash
-   # Create feature branch
-   git checkout -b feature/<plan-name>
+   # 创建功能分支
+   git checkout -b feature/<计划名称>
 
-   # Optional: Create isolated worktree
-   git worktree add ../worktree-<plan-name> -b feature/<plan-name>
+   # 可选：创建隔离 worktree
+   git worktree add ../worktree-<计划名称> -b feature/<计划名称>
    ```
 
-3. **Dependency Installation**
-   - Install any new dependencies specified in plan
-   - Verify build passes before starting
+3. **依赖安装**
+   - 安装计划中指定的新依赖
+   - 验证构建在开始前通过
 
-### Phase 2: Execution Loop
+### 阶段2：执行循环
 
-For each task in the plan:
+对计划中的每个任务：
 
-1. **Pre-Implementation**
-   - Read relevant existing code
-   - Understand the context
-   - Plan the specific changes
+1. **预实现**
+   - 阅读相关现有代码
+   - 理解上下文
+   - 规划具体变更
 
-2. **Implementation**
-   - Write code following project patterns
-   - Add/update types and interfaces
-   - Follow language-specific best practices
+2. **实现**
+   - 遵循项目模式编写代码
+   - 添加/更新类型和接口
+   - 遵循语言特定最佳实践
 
-3. **Testing**
-   - Write unit tests for new code
-   - Update existing tests if needed
-   - Run full test suite
+3. **测试**
+   - 为新代码编写单元测试
+   - 必要时更新现有测试
+   - 运行完整测试套件
 
-4. **Verification**
+4. **验证**
    ```bash
    # TypeScript
    npm run lint && npm run type-check && npm test
@@ -61,141 +61,141 @@ For each task in the plan:
    ./mvnw verify
    ```
 
-5. **Commit**
+5. **提交**
    ```bash
-   git add <files>
-   git commit -m "feat(<scope>): <description>"
+   git add <文件>
+   git commit -m "feat(<范围>): <描述>"
    ```
 
-### Phase 3: Completion
+### 阶段3：完成
 
-1. **Final Verification**
-   - Run all tests
-   - Build the project
-   - Check for any regressions
+1. **最终验证**
+   - 运行所有测试
+   - 构建项目
+   - 检查回归问题
 
-2. **Cleanup**
+2. **清理**
    ```bash
-   # If using worktree
+   # 如果使用 worktree
    cd ..
-   git worktree remove worktree-<plan-name>
+   git worktree remove worktree-<计划名称>
    ```
 
-3. **Prepare for Review**
-   - Push branch to remote
-   - Create draft PR if configured
+3. **准备审查**
+   - 推送分支到远程
+   - 如配置则创建草稿 PR
 
-## Execution Modes
+## 执行模式
 
-### Standard Mode
-Execute all tasks sequentially with verification.
+### 标准模式
+顺序执行所有任务并验证。
 
-### Parallel Mode
-Execute independent tasks in parallel (use with caution).
+### 并行模式
+并行执行独立任务（谨慎使用）。
 
-### Step Mode
-Execute one task at a time, requiring confirmation between tasks.
+### 步进模式
+逐任务执行，任务间需要确认。
 
-## Output Format
+## 输出格式
 
 ```markdown
-# Work Session Report
+# 工作会话报告
 
-## Plan: [Plan Name]
-**Branch**: feature/<name>
-**Started**: [timestamp]
-**Completed**: [timestamp]
+## 计划：[计划名称]
+**分支**：feature/<名称>
+**开始时间**：[时间戳]
+**完成时间**：[时间戳]
 
-## Task Progress
+## 任务进度
 
-### Task 1: [Name]
-- **Status**: Complete ✓
-- **Files Changed**:
-  - `src/file.ts` - Added new function
-  - `tests/file.test.ts` - Added tests
-- **Commit**: abc1234
-- **Notes**: Any relevant observations
+### 任务1：[名称]
+- **状态**：完成 ✓
+- **变更文件**：
+  - `src/file.ts` - 添加新函数
+  - `tests/file.test.ts` - 添加测试
+- **提交**：abc1234
+- **备注**：相关观察
 
-### Task 2: [Name]
-- **Status**: Complete ✓
+### 任务2：[名称]
+- **状态**：完成 ✓
 ...
 
-## Quality Metrics
-- Tests: All passing (50/50)
-- Lint: No issues
-- Type Check: No errors
-- Build: Successful
+## 质量指标
+- 测试：全部通过 (50/50)
+- Lint：无问题
+- 类型检查：无错误
+- 构建：成功
 
-## Commits Made
-| Hash | Message |
-|------|---------|
-| abc1234 | feat(auth): add login endpoint |
-| def5678 | test(auth): add login tests |
+## 提交记录
+| 哈希 | 消息 |
+|------|------|
+| abc1234 | feat(auth): 添加登录端点 |
+| def5678 | test(auth): 添加登录测试 |
 
-## Next Steps
-- [ ] Push to remote: `git push -u origin feature/<name>`
-- [ ] Create PR for review
-- [ ] Run /polyglot:review for code review
+## 后续步骤
+- [ ] 推送到远程：`git push -u origin feature/<名称>`
+- [ ] 创建 PR 审查
+- [ ] 运行 /polyglot:review 代码审查
 ```
 
-## Error Handling
+## 错误处理
 
-### Test Failure
+### 测试失败
 ```markdown
-## Task Blocked: Test Failure
+## 任务阻塞：测试失败
 
-**Task**: Task name
-**Error**:
+**任务**：任务名称
+**错误**：
 ```
-Error message here
-```
-
-**Attempted Fixes**:
-1. Tried X
-2. Tried Y
-
-**Recommendation**: [What to do next]
+错误消息
 ```
 
-### Build Failure
+**尝试的修复**：
+1. 尝试 X
+2. 尝试 Y
+
+**建议**：[下一步建议]
+```
+
+### 构建失败
 ```markdown
-## Task Blocked: Build Failure
+## 任务阻塞：构建失败
 
-**Error Type**: [Type/Compile/etc]
-**Error**:
+**错误类型**：[类型/编译等]
+**错误**：
 ```
-Error message
-```
-
-**Likely Cause**: Analysis
-**Suggested Fix**: Recommendation
+错误消息
 ```
 
-## Git Worktree Usage
+**可能原因**：分析
+**建议修复**：建议
+```
 
-For isolation during complex work:
+## Git Worktree 使用
+
+复杂工作时使用隔离环境：
 
 ```bash
-# Create worktree
+# 创建 worktree
 git worktree add ../feature-workspace -b feature/my-feature
 
-# Work in isolated environment
+# 在隔离环境中工作
 cd ../feature-workspace
 
-# Complete work and return
+# 完成工作后返回
 cd ../main-repo
 git worktree remove ../feature-workspace
 ```
 
-Benefits:
-- Clean working directory
-- Easy to abandon if needed
-- Multiple features in parallel
+优点：
+- 干净的工作目录
+- 需要时易于放弃
+- 可并行开发多个功能
 
-## Best Practices
+## 最佳实践
 
-1. **Atomic Commits**: One logical change per commit
-2. **Test First**: Write tests before or alongside code
-3. **Verify Often**: Run tests after each change
-4. **Small Steps**: Break large changes into smaller commits
-5. **Clean History**: Use meaningful commit messages
+1. **原子提交**：每个提交一个逻辑变更
+2. **测试先行**：与代码同步或先于代码编写测试
+3. **频繁验证**：每次变更后运行测试
+4. **小步前进**：将大变更分解为小提交
+5. **清晰历史**：使用有意义的提交消息

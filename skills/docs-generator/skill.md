@@ -1,73 +1,73 @@
-# Documentation Generator Skill
+# 文档生成器技能
 
-A comprehensive skill for generating various types of documentation from code analysis.
+从代码分析生成各类文档的综合技能。
 
-## Capabilities
+## 能力
 
-- Generate architecture documentation
-- Create API reference documentation
-- Produce UML diagrams (Mermaid format)
-- Write README files
-- Create user manuals
-- Generate changelog entries
+- 生成架构文档
+- 创建 API 参考文档
+- 生成 UML 图（Mermaid 格式）
+- 编写 README 文件
+- 创建用户手册
+- 生成变更日志条目
 
-## Usage
+## 用法
 
-This skill is invoked by the `/polyglot:docs` command and documentation agents.
+此技能由 `/polyglot:docs` 命令和文档代理调用。
 
-## Process
+## 流程
 
-### 1. Code Analysis
+### 1. 代码分析
 
 ```bash
-# Analyze project structure
+# 分析项目结构
 find src -type f \( -name "*.ts" -o -name "*.py" -o -name "*.java" \)
 
-# Extract exports and public APIs
+# 提取导出和公共 API
 grep -r "export" src/
 ```
 
-### 2. Pattern Recognition
+### 2. 模式识别
 
-- Identify architectural patterns
-- Map component relationships
-- Document data flows
+- 识别架构模式
+- 映射组件关系
+- 记录数据流
 
-### 3. Template Application
+### 3. 模板应用
 
-Apply appropriate template based on documentation type:
-- `architecture-template.md` for architecture docs
-- `api-template.md` for API reference
-- `readme-template.md` for README files
-- `manual-template.md` for user manuals
+根据文档类型应用相应模板：
+- `architecture-template.md` 用于架构文档
+- `api-template.md` 用于 API 参考
+- `readme-template.md` 用于 README 文件
+- `manual-template.md` 用于用户手册
 
-### 4. Content Generation
+### 4. 内容生成
 
-Generate content sections:
-1. Overview and purpose
-2. Technical details
-3. Usage examples
-4. Configuration options
+生成内容章节：
+1. 概述和目的
+2. 技术细节
+3. 使用示例
+4. 配置选项
 
-### 5. Quality Checks
+### 5. 质量检查
 
-- Verify completeness
-- Check for broken links
-- Validate code examples
-- Ensure consistency
+- 验证完整性
+- 检查失效链接
+- 验证代码示例
+- 确保一致性
 
-## Output Locations
+## 输出位置
 
-| Doc Type | Default Location |
-|----------|------------------|
-| Architecture | `docs/architecture/` |
+| 文档类型 | 默认位置 |
+|----------|----------|
+| 架构 | `docs/architecture/` |
 | API | `docs/api/` |
 | UML | `docs/diagrams/` |
-| README | Project root |
-| Manual | `docs/user-guide/` |
+| README | 项目根目录 |
+| 手册 | `docs/user-guide/` |
 
-## Integration Points
+## 集成点
 
-- Works with `codebase-researcher` agent
-- Uses templates from `templates/` directory
-- Outputs to standard documentation locations
+- 与 `codebase-researcher` 代理协作
+- 使用 `templates/` 目录中的模板
+- 输出到标准文档位置

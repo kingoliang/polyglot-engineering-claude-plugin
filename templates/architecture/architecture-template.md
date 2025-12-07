@@ -1,121 +1,121 @@
-# [Project Name] Architecture Document
+# [项目名称] 架构文档
 
-> **Version**: 1.0.0
-> **Last Updated**: [Date]
-> **Status**: [Draft/Review/Approved]
+> **版本**：1.0.0
+> **最后更新**：[日期]
+> **状态**：[草稿/审查中/已批准]
 
-## Table of Contents
+## 目录
 
-1. [Overview](#overview)
-2. [System Context](#system-context)
-3. [Architecture Decisions](#architecture-decisions)
-4. [Components](#components)
-5. [Data Architecture](#data-architecture)
-6. [Integration](#integration)
-7. [Security](#security)
-8. [Deployment](#deployment)
-9. [Appendix](#appendix)
-
----
-
-## Overview
-
-### Purpose
-
-[Describe the system's purpose and primary functions]
-
-### Scope
-
-This document covers:
-- [Scope item 1]
-- [Scope item 2]
-
-This document does NOT cover:
-- [Out of scope item 1]
-- [Out of scope item 2]
-
-### Stakeholders
-
-| Role | Name | Responsibilities |
-|------|------|------------------|
-| Product Owner | [Name] | [Responsibilities] |
-| Tech Lead | [Name] | [Responsibilities] |
-| Developer | [Name] | [Responsibilities] |
+1. [概述](#概述)
+2. [系统上下文](#系统上下文)
+3. [架构决策](#架构决策)
+4. [组件](#组件)
+5. [数据架构](#数据架构)
+6. [集成](#集成)
+7. [安全](#安全)
+8. [部署](#部署)
+9. [附录](#附录)
 
 ---
 
-## System Context
+## 概述
 
-### Context Diagram
+### 目的
+
+[描述系统的目的和主要功能]
+
+### 范围
+
+本文档涵盖：
+- [范围项 1]
+- [范围项 2]
+
+本文档不涵盖：
+- [范围外项 1]
+- [范围外项 2]
+
+### 利益相关者
+
+| 角色 | 姓名 | 职责 |
+|------|------|------|
+| 产品负责人 | [姓名] | [职责] |
+| 技术负责人 | [姓名] | [职责] |
+| 开发人员 | [姓名] | [职责] |
+
+---
+
+## 系统上下文
+
+### 上下文图
 
 ```mermaid
 graph TB
-    subgraph External
-        User[User]
-        External1[External System 1]
-        External2[External System 2]
+    subgraph 外部
+        User[用户]
+        External1[外部系统 1]
+        External2[外部系统 2]
     end
 
-    subgraph System Boundary
-        App[Application]
+    subgraph 系统边界
+        App[应用程序]
     end
 
-    User -->|uses| App
-    App -->|calls| External1
-    External2 -->|sends data| App
+    User -->|使用| App
+    App -->|调用| External1
+    External2 -->|发送数据| App
 ```
 
-### External Dependencies
+### 外部依赖
 
-| System | Purpose | Protocol | Owner |
-|--------|---------|----------|-------|
-| [System 1] | [Purpose] | [Protocol] | [Owner] |
-| [System 2] | [Purpose] | [Protocol] | [Owner] |
-
----
-
-## Architecture Decisions
-
-### ADR-001: [Decision Title]
-
-**Status**: [Proposed/Accepted/Deprecated/Superseded]
-
-**Context**:
-[What is the issue that we're seeing that is motivating this decision?]
-
-**Decision**:
-[What is the change that we're proposing?]
-
-**Consequences**:
-- Positive: [Positive consequence]
-- Negative: [Negative consequence]
-- Neutral: [Neutral consequence]
-
-**Alternatives Considered**:
-1. [Alternative 1]: [Why rejected]
-2. [Alternative 2]: [Why rejected]
+| 系统 | 用途 | 协议 | 负责人 |
+|------|------|------|--------|
+| [系统 1] | [用途] | [协议] | [负责人] |
+| [系统 2] | [用途] | [协议] | [负责人] |
 
 ---
 
-## Components
+## 架构决策
 
-### High-Level Architecture
+### ADR-001：[决策标题]
+
+**状态**：[提议/已接受/已弃用/已替代]
+
+**背景**：
+[促成此决策的问题是什么？]
+
+**决策**：
+[我们提议的变更是什么？]
+
+**后果**：
+- 正面：[正面影响]
+- 负面：[负面影响]
+- 中性：[中性影响]
+
+**考虑的替代方案**：
+1. [替代方案 1]：[为何放弃]
+2. [替代方案 2]：[为何放弃]
+
+---
+
+## 组件
+
+### 高层架构
 
 ```mermaid
 graph TB
-    subgraph Presentation
-        Web[Web UI]
-        API[API Gateway]
+    subgraph 展示层
+        Web[Web 界面]
+        API[API 网关]
     end
 
-    subgraph Business
-        Svc1[Service 1]
-        Svc2[Service 2]
+    subgraph 业务层
+        Svc1[服务 1]
+        Svc2[服务 2]
     end
 
-    subgraph Data
-        DB[(Database)]
-        Cache[(Cache)]
+    subgraph 数据层
+        DB[(数据库)]
+        Cache[(缓存)]
     end
 
     Web --> API
@@ -126,38 +126,38 @@ graph TB
     Svc2 --> DB
 ```
 
-### Component Details
+### 组件详情
 
-#### [Component Name]
+#### [组件名称]
 
-| Attribute | Value |
-|-----------|-------|
-| **Purpose** | [What it does] |
-| **Technology** | [Technologies used] |
-| **Location** | [File/folder path] |
-| **Dependencies** | [What it depends on] |
-| **Dependents** | [What depends on it] |
+| 属性 | 值 |
+|------|------|
+| **用途** | [它做什么] |
+| **技术** | [使用的技术] |
+| **位置** | [文件/文件夹路径] |
+| **依赖** | [它依赖什么] |
+| **被依赖** | [什么依赖它] |
 
-**Responsibilities**:
-- [Responsibility 1]
-- [Responsibility 2]
+**职责**：
+- [职责 1]
+- [职责 2]
 
-**Interfaces**:
+**接口**：
 ```typescript
 interface ComponentInterface {
-  // Interface definition
+  // 接口定义
 }
 ```
 
 ---
 
-## Data Architecture
+## 数据架构
 
-### Data Model
+### 数据模型
 
 ```mermaid
 erDiagram
-    ENTITY1 ||--o{ ENTITY2 : contains
+    ENTITY1 ||--o{ ENTITY2 : 包含
     ENTITY1 {
         type field1 PK
         type field2
@@ -168,98 +168,98 @@ erDiagram
     }
 ```
 
-### Data Flow
+### 数据流
 
 ```mermaid
 flowchart LR
-    A[Input] --> B[Validate]
-    B --> C[Transform]
-    C --> D[Store]
-    D --> E[Output]
+    A[输入] --> B[验证]
+    B --> C[转换]
+    C --> D[存储]
+    D --> E[输出]
 ```
 
-### Data Storage
+### 数据存储
 
-| Store | Type | Purpose | Retention |
-|-------|------|---------|-----------|
-| [Store 1] | [Type] | [Purpose] | [Retention] |
-| [Store 2] | [Type] | [Purpose] | [Retention] |
-
----
-
-## Integration
-
-### API Contracts
-
-| Endpoint | Method | Purpose |
-|----------|--------|---------|
-| `/api/v1/resource` | GET | [Purpose] |
-| `/api/v1/resource` | POST | [Purpose] |
-
-### Event Contracts
-
-| Event | Publisher | Subscribers | Payload |
-|-------|-----------|-------------|---------|
-| [Event 1] | [Publisher] | [Subscribers] | [Schema] |
-
-### Integration Patterns
-
-- **Pattern 1**: [Description]
-- **Pattern 2**: [Description]
+| 存储 | 类型 | 用途 | 保留期 |
+|------|------|------|--------|
+| [存储 1] | [类型] | [用途] | [保留期] |
+| [存储 2] | [类型] | [用途] | [保留期] |
 
 ---
 
-## Security
+## 集成
 
-### Authentication
+### API 契约
 
-[Describe authentication mechanism]
+| 端点 | 方法 | 用途 |
+|------|------|------|
+| `/api/v1/resource` | GET | [用途] |
+| `/api/v1/resource` | POST | [用途] |
 
-### Authorization
+### 事件契约
 
-[Describe authorization model]
+| 事件 | 发布者 | 订阅者 | 负载 |
+|------|--------|--------|------|
+| [事件 1] | [发布者] | [订阅者] | [Schema] |
 
-### Data Protection
+### 集成模式
 
-| Data Type | Classification | Protection |
-|-----------|---------------|------------|
-| [Data 1] | [Classification] | [Protection] |
-
-### Security Controls
-
-- [ ] Input validation
-- [ ] Output encoding
-- [ ] Authentication required
-- [ ] Authorization checked
-- [ ] Encryption at rest
-- [ ] Encryption in transit
-- [ ] Audit logging
+- **模式 1**：[描述]
+- **模式 2**：[描述]
 
 ---
 
-## Deployment
+## 安全
 
-### Environment Overview
+### 认证
 
-| Environment | Purpose | URL |
-|-------------|---------|-----|
-| Development | [Purpose] | [URL] |
-| Staging | [Purpose] | [URL] |
-| Production | [Purpose] | [URL] |
+[描述认证机制]
 
-### Infrastructure
+### 授权
+
+[描述授权模型]
+
+### 数据保护
+
+| 数据类型 | 分类 | 保护措施 |
+|----------|------|----------|
+| [数据 1] | [分类] | [保护措施] |
+
+### 安全控制
+
+- [ ] 输入验证
+- [ ] 输出编码
+- [ ] 需要认证
+- [ ] 授权检查
+- [ ] 静态加密
+- [ ] 传输加密
+- [ ] 审计日志
+
+---
+
+## 部署
+
+### 环境概述
+
+| 环境 | 用途 | URL |
+|------|------|-----|
+| 开发 | [用途] | [URL] |
+| 预发布 | [用途] | [URL] |
+| 生产 | [用途] | [URL] |
+
+### 基础设施
 
 ```mermaid
 graph TB
-    subgraph Cloud Provider
-        LB[Load Balancer]
-        subgraph Compute
-            App1[App Instance 1]
-            App2[App Instance 2]
+    subgraph 云服务商
+        LB[负载均衡器]
+        subgraph 计算
+            App1[应用实例 1]
+            App2[应用实例 2]
         end
-        subgraph Storage
-            DB[(Database)]
-            S3[Object Storage]
+        subgraph 存储
+            DB[(数据库)]
+            S3[对象存储]
         end
     end
 
@@ -271,28 +271,28 @@ graph TB
     App2 --> S3
 ```
 
-### Scaling Strategy
+### 扩展策略
 
-[Describe how the system scales]
+[描述系统如何扩展]
 
 ---
 
-## Appendix
+## 附录
 
-### Glossary
+### 术语表
 
-| Term | Definition |
-|------|------------|
-| [Term 1] | [Definition] |
-| [Term 2] | [Definition] |
+| 术语 | 定义 |
+|------|------|
+| [术语 1] | [定义] |
+| [术语 2] | [定义] |
 
-### References
+### 参考资料
 
-- [Reference 1](link)
-- [Reference 2](link)
+- [参考资料 1](链接)
+- [参考资料 2](链接)
 
-### Change Log
+### 变更日志
 
-| Version | Date | Author | Changes |
-|---------|------|--------|---------|
-| 1.0.0 | [Date] | [Author] | Initial version |
+| 版本 | 日期 | 作者 | 变更 |
+|------|------|------|------|
+| 1.0.0 | [日期] | [作者] | 初始版本 |

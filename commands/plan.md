@@ -1,166 +1,166 @@
-# /polyglot:plan Command
+# /polyglot:plan 命令
 
-Transform feature descriptions into detailed, actionable implementation plans with research and acceptance criteria.
+将功能描述转换为详细、可执行的实施计划，包含研究和验收标准。
 
-## Usage
+## 用法
 
 ```
-/polyglot:plan [feature description or issue reference]
+/polyglot:plan [功能描述或 Issue 引用]
 ```
 
-## Process
+## 流程
 
-### Phase 1: Research & Discovery
+### 阶段1：研究与发现
 
-1. **Codebase Analysis**
-   - Invoke `codebase-researcher` agent to understand current architecture
-   - Identify relevant existing code, patterns, and dependencies
-   - Map affected systems and components
+1. **代码库分析**
+   - 调用 `codebase-researcher` 代理理解当前架构
+   - 识别相关现有代码、模式和依赖
+   - 映射受影响的系统和组件
 
-2. **Framework Research** (if needed)
-   - Invoke `framework-researcher` agent for technology guidance
-   - Research best practices for the specific task
-   - Identify potential libraries or approaches
+2. **框架研究**（如需要）
+   - 调用 `framework-researcher` 代理获取技术指导
+   - 研究特定任务的最佳实践
+   - 识别潜在的库或方法
 
-3. **Requirement Clarification**
-   - Parse the feature description
-   - Identify ambiguities
-   - Ask clarifying questions if needed
+3. **需求澄清**
+   - 解析功能描述
+   - 识别歧义
+   - 必要时提出澄清问题
 
-### Phase 2: Plan Generation
+### 阶段2：计划生成
 
-1. **Scope Definition**
-   - Define clear boundaries
-   - Identify in-scope and out-of-scope items
-   - List assumptions
+1. **范围定义**
+   - 定义清晰边界
+   - 识别包含和排除项
+   - 列出假设
 
-2. **Task Breakdown**
-   - Break into atomic, estimable tasks
-   - Identify dependencies between tasks
-   - Order tasks logically
+2. **任务分解**
+   - 分解为原子化、可估算的任务
+   - 识别任务间依赖
+   - 逻辑排序任务
 
-3. **Technical Design**
-   - Define data models/types
-   - Design API contracts (if applicable)
-   - Specify component interactions
+3. **技术设计**
+   - 定义数据模型/类型
+   - 设计 API 契约（如适用）
+   - 指定组件交互
 
-4. **Acceptance Criteria**
-   - Define testable criteria for each task
-   - Specify expected behaviors
-   - Include edge cases
+4. **验收标准**
+   - 为每个任务定义可测试标准
+   - 指定预期行为
+   - 包含边界情况
 
-### Phase 3: Risk Assessment
+### 阶段3：风险评估
 
-1. **Technical Risks**
-   - Identify complex areas
-   - Note uncertainty points
-   - Suggest mitigations
+1. **技术风险**
+   - 识别复杂区域
+   - 标注不确定点
+   - 建议缓解措施
 
-2. **Dependencies**
-   - External service dependencies
-   - Library version requirements
-   - Team dependencies
+2. **依赖关系**
+   - 外部服务依赖
+   - 库版本要求
+   - 团队依赖
 
-## Output Format
+## 输出格式
 
 ```markdown
-# Implementation Plan: [Feature Name]
+# 实施计划：[功能名称]
 
-## Overview
-Brief description of what will be implemented.
+## 概述
+简要描述将要实现的内容。
 
-## Research Summary
-Key findings from codebase and framework research.
+## 研究摘要
+代码库和框架研究的关键发现。
 
-## Scope
+## 范围
 
-### In Scope
-- Item 1
-- Item 2
+### 包含
+- 项目1
+- 项目2
 
-### Out of Scope
-- Item 1
-- Item 2
+### 排除
+- 项目1
+- 项目2
 
-### Assumptions
-- Assumption 1
-- Assumption 2
+### 假设
+- 假设1
+- 假设2
 
-## Technical Design
+## 技术设计
 
-### Data Models
+### 数据模型
 ```language
-// Type definitions or models
+// 类型定义或模型
 ```
 
-### API Contracts (if applicable)
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| /api/x   | POST   | Does Y      |
+### API 契约（如适用）
+| 端点 | 方法 | 描述 |
+|------|------|------|
+| /api/x | POST | 执行 Y |
 
-### Component Changes
-| Component | Change Type | Description |
-|-----------|-------------|-------------|
-| file.ts   | Modify      | Add X       |
+### 组件变更
+| 组件 | 变更类型 | 描述 |
+|------|----------|------|
+| file.ts | 修改 | 添加 X |
 
-## Implementation Tasks
+## 实施任务
 
-### Task 1: [Task Title]
-**Description**: What needs to be done
-**Files**: List of files to change
-**Acceptance Criteria**:
-- [ ] Criterion 1
-- [ ] Criterion 2
+### 任务1：[任务标题]
+**描述**：需要完成的工作
+**文件**：需要变更的文件列表
+**验收标准**：
+- [ ] 标准1
+- [ ] 标准2
 
-### Task 2: [Task Title]
+### 任务2：[任务标题]
 ...
 
-## Testing Strategy
-- Unit tests for: [list]
-- Integration tests for: [list]
-- E2E tests for: [list]
+## 测试策略
+- 单元测试：[列表]
+- 集成测试：[列表]
+- E2E 测试：[列表]
 
-## Risks & Mitigations
-| Risk | Impact | Mitigation |
-|------|--------|------------|
-| X    | High   | Y          |
+## 风险与缓解
+| 风险 | 影响 | 缓解措施 |
+|------|------|----------|
+| X | 高 | Y |
 
-## Dependencies
-- Library X version Y
-- External service Z
+## 依赖
+- 库 X 版本 Y
+- 外部服务 Z
 
-## Notes
-Additional considerations for implementation.
+## 备注
+实施的其他注意事项。
 ```
 
-## Example Usage
+## 使用示例
 
-### Simple Feature
+### 简单功能
 ```
-/polyglot:plan Add user profile picture upload
+/polyglot:plan 添加用户头像上传功能
 ```
 
-### From Issue
+### 从 Issue 创建
 ```
 /polyglot:plan #123
 ```
 
-### Complex Feature
+### 复杂功能
 ```
-/polyglot:plan Implement real-time notifications using WebSocket
-with support for mobile push notifications and email fallback
+/polyglot:plan 实现 WebSocket 实时通知，
+支持移动推送和邮件回退
 ```
 
-## Integration with Other Commands
+## 与其他命令集成
 
-After planning:
-- Use `/polyglot:work` to execute the plan
-- Use `/polyglot:review` after implementation
-- Use `/polyglot:docs` to update documentation
+计划完成后：
+- 使用 `/polyglot:work` 执行计划
+- 实现后使用 `/polyglot:review` 审查
+- 使用 `/polyglot:docs` 更新文档
 
-## Best Practices
+## 最佳实践
 
-1. **Start Small**: Break large features into multiple plans
-2. **Be Specific**: Vague descriptions lead to vague plans
-3. **Include Context**: Reference existing code or patterns
-4. **Review Before Executing**: Plans should be reviewed before work starts
+1. **从小处着手**：将大功能分解为多个计划
+2. **明确具体**：模糊的描述导致模糊的计划
+3. **包含上下文**：引用现有代码或模式
+4. **执行前审查**：计划应在开始工作前审查

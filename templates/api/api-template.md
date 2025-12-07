@@ -1,24 +1,24 @@
-# [API Name] API Reference
+# [API 名称] API 参考
 
-> **Version**: v1
-> **Base URL**: `https://api.example.com/v1`
-> **Last Updated**: [Date]
+> **版本**：v1
+> **基础 URL**：`https://api.example.com/v1`
+> **最后更新**：[日期]
 
-## Overview
+## 概述
 
-[Brief description of the API and its purpose]
+[API 及其用途的简要描述]
 
-## Authentication
+## 认证
 
-### Bearer Token
+### Bearer 令牌
 
-All API requests require authentication using a Bearer token:
+所有 API 请求都需要使用 Bearer 令牌进行认证：
 
 ```http
 Authorization: Bearer <your-token>
 ```
 
-### Obtaining a Token
+### 获取令牌
 
 ```http
 POST /auth/token
@@ -30,7 +30,7 @@ Content-Type: application/json
 }
 ```
 
-**Response**:
+**响应**：
 ```json
 {
   "access_token": "eyJhbGciOiJIUzI1NiIs...",
@@ -41,23 +41,23 @@ Content-Type: application/json
 
 ---
 
-## Rate Limiting
+## 速率限制
 
-| Limit | Window | Scope |
-|-------|--------|-------|
-| 100 requests | 1 minute | Per IP |
-| 1000 requests | 1 hour | Per User |
+| 限制 | 窗口 | 范围 |
+|------|------|------|
+| 100 请求 | 1 分钟 | 每 IP |
+| 1000 请求 | 1 小时 | 每用户 |
 
-Rate limit headers:
-- `X-RateLimit-Limit`: Request limit
-- `X-RateLimit-Remaining`: Remaining requests
-- `X-RateLimit-Reset`: Reset timestamp (Unix)
+速率限制响应头：
+- `X-RateLimit-Limit`：请求限制
+- `X-RateLimit-Remaining`：剩余请求数
+- `X-RateLimit-Reset`：重置时间戳（Unix）
 
 ---
 
-## Common Response Formats
+## 通用响应格式
 
-### Success Response
+### 成功响应
 
 ```json
 {
@@ -69,19 +69,19 @@ Rate limit headers:
 }
 ```
 
-### Error Response
+### 错误响应
 
 ```json
 {
   "error": {
     "code": "ERROR_CODE",
-    "message": "Human readable message",
+    "message": "人类可读的消息",
     "details": { ... }
   }
 }
 ```
 
-### Pagination
+### 分页
 
 ```json
 {
@@ -99,46 +99,46 @@ Rate limit headers:
 
 ---
 
-## Endpoints
+## 端点
 
-### [Resource Name]
+### [资源名称]
 
 ---
 
-#### List [Resources]
+#### 列出 [资源]
 
 ```http
 GET /resources
 ```
 
-**Query Parameters**:
+**查询参数**：
 
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| page | integer | No | 1 | Page number |
-| limit | integer | No | 20 | Items per page (max: 100) |
-| sort | string | No | created_at | Sort field |
-| order | string | No | desc | Sort order (asc/desc) |
-| search | string | No | - | Search query |
+| 参数 | 类型 | 必填 | 默认值 | 描述 |
+|------|------|------|--------|------|
+| page | integer | 否 | 1 | 页码 |
+| limit | integer | 否 | 20 | 每页数量（最大：100） |
+| sort | string | 否 | created_at | 排序字段 |
+| order | string | 否 | desc | 排序顺序（asc/desc） |
+| search | string | 否 | - | 搜索查询 |
 
-**Example Request**:
+**示例请求**：
 ```bash
 curl -X GET "https://api.example.com/v1/resources?page=1&limit=10" \
   -H "Authorization: Bearer <token>"
 ```
 
-**Response**: `200 OK`
+**响应**：`200 OK`
 ```json
 {
   "data": [
     {
       "id": "uuid-1",
-      "name": "Resource 1",
+      "name": "资源 1",
       "createdAt": "2024-01-01T00:00:00Z"
     },
     {
       "id": "uuid-2",
-      "name": "Resource 2",
+      "name": "资源 2",
       "createdAt": "2024-01-02T00:00:00Z"
     }
   ],
@@ -153,31 +153,31 @@ curl -X GET "https://api.example.com/v1/resources?page=1&limit=10" \
 
 ---
 
-#### Get [Resource]
+#### 获取 [资源]
 
 ```http
 GET /resources/{id}
 ```
 
-**Path Parameters**:
+**路径参数**：
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| id | uuid | Resource ID |
+| 参数 | 类型 | 描述 |
+|------|------|------|
+| id | uuid | 资源 ID |
 
-**Example Request**:
+**示例请求**：
 ```bash
 curl -X GET "https://api.example.com/v1/resources/uuid-1" \
   -H "Authorization: Bearer <token>"
 ```
 
-**Response**: `200 OK`
+**响应**：`200 OK`
 ```json
 {
   "data": {
     "id": "uuid-1",
-    "name": "Resource 1",
-    "description": "Resource description",
+    "name": "资源 1",
+    "description": "资源描述",
     "status": "active",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": "2024-01-01T00:00:00Z"
@@ -185,98 +185,98 @@ curl -X GET "https://api.example.com/v1/resources/uuid-1" \
 }
 ```
 
-**Error Responses**:
+**错误响应**：
 
-| Status | Code | Description |
-|--------|------|-------------|
-| 404 | NOT_FOUND | Resource not found |
+| 状态码 | 代码 | 描述 |
+|--------|------|------|
+| 404 | NOT_FOUND | 资源未找到 |
 
 ---
 
-#### Create [Resource]
+#### 创建 [资源]
 
 ```http
 POST /resources
 ```
 
-**Request Body**:
+**请求体**：
 
-| Field | Type | Required | Validation | Description |
-|-------|------|----------|------------|-------------|
-| name | string | Yes | 1-255 chars | Resource name |
-| description | string | No | Max 1000 chars | Description |
-| status | string | No | active/inactive | Status |
+| 字段 | 类型 | 必填 | 验证 | 描述 |
+|------|------|------|------|------|
+| name | string | 是 | 1-255 字符 | 资源名称 |
+| description | string | 否 | 最大 1000 字符 | 描述 |
+| status | string | 否 | active/inactive | 状态 |
 
-**Example Request**:
+**示例请求**：
 ```bash
 curl -X POST "https://api.example.com/v1/resources" \
   -H "Authorization: Bearer <token>" \
   -H "Content-Type: application/json" \
   -d '{
-    "name": "New Resource",
-    "description": "Resource description"
+    "name": "新资源",
+    "description": "资源描述"
   }'
 ```
 
-**Response**: `201 Created`
+**响应**：`201 Created`
 ```json
 {
   "data": {
     "id": "uuid-new",
-    "name": "New Resource",
-    "description": "Resource description",
+    "name": "新资源",
+    "description": "资源描述",
     "status": "active",
     "createdAt": "2024-01-01T00:00:00Z"
   }
 }
 ```
 
-**Error Responses**:
+**错误响应**：
 
-| Status | Code | Description |
-|--------|------|-------------|
-| 400 | VALIDATION_ERROR | Invalid request body |
-| 409 | CONFLICT | Resource already exists |
+| 状态码 | 代码 | 描述 |
+|--------|------|------|
+| 400 | VALIDATION_ERROR | 请求体无效 |
+| 409 | CONFLICT | 资源已存在 |
 
 ---
 
-#### Update [Resource]
+#### 更新 [资源]
 
 ```http
 PUT /resources/{id}
 ```
 
-**Path Parameters**:
+**路径参数**：
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| id | uuid | Resource ID |
+| 参数 | 类型 | 描述 |
+|------|------|------|
+| id | uuid | 资源 ID |
 
-**Request Body**:
+**请求体**：
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| name | string | No | Resource name |
-| description | string | No | Description |
-| status | string | No | Status |
+| 字段 | 类型 | 必填 | 描述 |
+|------|------|------|------|
+| name | string | 否 | 资源名称 |
+| description | string | 否 | 描述 |
+| status | string | 否 | 状态 |
 
-**Example Request**:
+**示例请求**：
 ```bash
 curl -X PUT "https://api.example.com/v1/resources/uuid-1" \
   -H "Authorization: Bearer <token>" \
   -H "Content-Type: application/json" \
   -d '{
-    "name": "Updated Name"
+    "name": "更新后的名称"
   }'
 ```
 
-**Response**: `200 OK`
+**响应**：`200 OK`
 ```json
 {
   "data": {
     "id": "uuid-1",
-    "name": "Updated Name",
-    "description": "Resource description",
+    "name": "更新后的名称",
+    "description": "资源描述",
     "status": "active",
     "updatedAt": "2024-01-01T12:00:00Z"
   }
@@ -285,53 +285,53 @@ curl -X PUT "https://api.example.com/v1/resources/uuid-1" \
 
 ---
 
-#### Delete [Resource]
+#### 删除 [资源]
 
 ```http
 DELETE /resources/{id}
 ```
 
-**Path Parameters**:
+**路径参数**：
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| id | uuid | Resource ID |
+| 参数 | 类型 | 描述 |
+|------|------|------|
+| id | uuid | 资源 ID |
 
-**Example Request**:
+**示例请求**：
 ```bash
 curl -X DELETE "https://api.example.com/v1/resources/uuid-1" \
   -H "Authorization: Bearer <token>"
 ```
 
-**Response**: `204 No Content`
+**响应**：`204 No Content`
 
 ---
 
-## Error Codes
+## 错误代码
 
-| Code | HTTP Status | Description |
-|------|-------------|-------------|
-| UNAUTHORIZED | 401 | Invalid or missing authentication |
-| FORBIDDEN | 403 | Insufficient permissions |
-| NOT_FOUND | 404 | Resource not found |
-| VALIDATION_ERROR | 400 | Invalid request data |
-| CONFLICT | 409 | Resource conflict |
-| RATE_LIMITED | 429 | Too many requests |
-| INTERNAL_ERROR | 500 | Server error |
+| 代码 | HTTP 状态 | 描述 |
+|------|-----------|------|
+| UNAUTHORIZED | 401 | 认证无效或缺失 |
+| FORBIDDEN | 403 | 权限不足 |
+| NOT_FOUND | 404 | 资源未找到 |
+| VALIDATION_ERROR | 400 | 请求数据无效 |
+| CONFLICT | 409 | 资源冲突 |
+| RATE_LIMITED | 429 | 请求过多 |
+| INTERNAL_ERROR | 500 | 服务器错误 |
 
 ---
 
 ## Webhooks
 
-### Event Types
+### 事件类型
 
-| Event | Description |
-|-------|-------------|
-| resource.created | New resource created |
-| resource.updated | Resource updated |
-| resource.deleted | Resource deleted |
+| 事件 | 描述 |
+|------|------|
+| resource.created | 新资源创建 |
+| resource.updated | 资源更新 |
+| resource.deleted | 资源删除 |
 
-### Payload Format
+### 负载格式
 
 ```json
 {
@@ -339,23 +339,23 @@ curl -X DELETE "https://api.example.com/v1/resources/uuid-1" \
   "timestamp": "2024-01-01T00:00:00Z",
   "data": {
     "id": "uuid",
-    "name": "Resource"
+    "name": "资源"
   }
 }
 ```
 
 ---
 
-## SDKs
+## SDK
 
-- [JavaScript/TypeScript SDK](link)
-- [Python SDK](link)
-- [Java SDK](link)
+- [JavaScript/TypeScript SDK](链接)
+- [Python SDK](链接)
+- [Java SDK](链接)
 
 ---
 
-## Changelog
+## 变更日志
 
-| Version | Date | Changes |
-|---------|------|---------|
-| v1.0.0 | [Date] | Initial release |
+| 版本 | 日期 | 变更 |
+|------|------|------|
+| v1.0.0 | [日期] | 初始发布 |

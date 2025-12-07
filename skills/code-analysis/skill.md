@@ -1,131 +1,131 @@
-# Code Analysis Skill
+# 代码分析技能
 
-A skill for analyzing code structure, patterns, and quality across TypeScript, Python, and Java projects.
+用于分析 TypeScript、Python 和 Java 项目的代码结构、模式和质量的技能。
 
-## Capabilities
+## 能力
 
-- Project structure analysis
-- Dependency mapping
-- Pattern recognition
-- Complexity metrics
-- Code quality assessment
+- 项目结构分析
+- 依赖映射
+- 模式识别
+- 复杂度度量
+- 代码质量评估
 
-## Supported Languages
+## 支持的语言
 
-| Language | File Extensions | Frameworks |
-|----------|-----------------|------------|
+| 语言 | 文件扩展名 | 框架 |
+|------|------------|------|
 | TypeScript | `.ts`, `.tsx` | React, Next.js, NestJS |
 | JavaScript | `.js`, `.jsx` | Express, Vue |
 | Python | `.py` | Django, FastAPI, Flask |
 | Java | `.java` | Spring Boot, Jakarta EE |
 
-## Analysis Types
+## 分析类型
 
-### 1. Structure Analysis
+### 1. 结构分析
 
-Analyze project organization:
-- Directory structure
-- Module organization
-- File relationships
+分析项目组织：
+- 目录结构
+- 模块组织
+- 文件关系
 
-### 2. Dependency Analysis
+### 2. 依赖分析
 
-Map dependencies:
-- External packages
-- Internal imports
-- Circular dependencies
+映射依赖关系：
+- 外部包
+- 内部导入
+- 循环依赖
 
-### 3. Pattern Analysis
+### 3. 模式分析
 
-Identify patterns:
-- Architectural patterns (MVC, Hexagonal, etc.)
-- Design patterns (Factory, Strategy, etc.)
-- Anti-patterns
+识别模式：
+- 架构模式（MVC、六边形等）
+- 设计模式（工厂、策略等）
+- 反模式
 
-### 4. Complexity Analysis
+### 4. 复杂度分析
 
-Calculate metrics:
-- Cyclomatic complexity
-- Lines of code
-- Function/method counts
-- Nesting depth
+计算度量指标：
+- 圈复杂度
+- 代码行数
+- 函数/方法数量
+- 嵌套深度
 
-### 5. API Analysis
+### 5. API 分析
 
-Extract API information:
-- Endpoints and routes
-- Request/response types
-- Authentication requirements
+提取 API 信息：
+- 端点和路由
+- 请求/响应类型
+- 认证要求
 
-## Usage
+## 用法
 
-### TypeScript Analysis
+### TypeScript 分析
 
 ```bash
-# Find all TypeScript files
+# 查找所有 TypeScript 文件
 find src -name "*.ts" -o -name "*.tsx"
 
-# Extract exports
+# 提取导出
 grep -r "export" --include="*.ts" src/
 
-# Find dependencies
+# 查找依赖
 cat package.json | jq '.dependencies'
 ```
 
-### Python Analysis
+### Python 分析
 
 ```bash
-# Find all Python files
+# 查找所有 Python 文件
 find . -name "*.py" -not -path "./.venv/*"
 
-# Extract classes
+# 提取类
 grep -r "class " --include="*.py" .
 
-# Find imports
+# 查找导入
 grep -r "^import\|^from" --include="*.py" .
 ```
 
-### Java Analysis
+### Java 分析
 
 ```bash
-# Find all Java files
+# 查找所有 Java 文件
 find src -name "*.java"
 
-# Extract classes
+# 提取类
 grep -r "public class\|public interface" --include="*.java" .
 
-# Find annotations
+# 查找注解
 grep -r "@" --include="*.java" src/
 ```
 
-## Output Format
+## 输出格式
 
 ```markdown
-# Code Analysis Report
+# 代码分析报告
 
-## Project Overview
-- Type: [TypeScript/Python/Java]
-- Files: [Count]
-- Lines of Code: [Count]
+## 项目概述
+- 类型：[TypeScript/Python/Java]
+- 文件数：[数量]
+- 代码行数：[数量]
 
-## Structure
-[Directory tree]
+## 结构
+[目录树]
 
-## Dependencies
-[Dependency list]
+## 依赖
+[依赖列表]
 
-## Patterns
-[Identified patterns]
+## 模式
+[识别的模式]
 
-## Metrics
-[Complexity metrics]
+## 度量
+[复杂度度量]
 
-## Recommendations
-[Improvement suggestions]
+## 建议
+[改进建议]
 ```
 
-## Integration
+## 集成
 
-- Used by review agents for context
-- Used by documentation agents for analysis
-- Used by planning agents for scope estimation
+- 被审查代理用于获取上下文
+- 被文档代理用于分析
+- 被规划代理用于范围估算

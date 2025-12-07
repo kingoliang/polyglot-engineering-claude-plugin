@@ -1,45 +1,45 @@
-# Polyglot Engineering Plugin
+# Polyglot Engineering 多语言工程插件
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugin-purple.svg)](https://claude.ai)
 
-A comprehensive Claude Code plugin for TypeScript, Python, and Java projects implementing the "compounding engineering" philosophy - where each unit of engineering work makes subsequent work easier.
+一个全面的 Claude Code 插件，支持 TypeScript、Python 和 Java 项目，实现"复合工程"理念——让每一次工程工作都使后续工作变得更容易。
 
-## Features
+## 功能特性
 
-- **Multi-Language Code Review**: Specialized reviewers for TypeScript, Python, and Java
-- **Architecture Analysis**: Design patterns, SOLID principles, and system design review
-- **Security Scanning**: OWASP-based vulnerability detection
-- **Performance Optimization**: Identify bottlenecks and optimization opportunities
-- **Documentation Generation**: Architecture docs, API reference, UML diagrams, README, user manuals
-- **Plan-Based Development**: Structured approach following BMAD methodology
+- **多语言代码审查**：针对 TypeScript、Python、Java 的专业审查器
+- **架构分析**：设计模式、SOLID 原则、系统设计审查
+- **安全扫描**：基于 OWASP 的漏洞检测
+- **性能优化**：识别瓶颈和优化机会
+- **文档生成**：架构文档、API 参考、UML 图、README、用户手册
+- **计划驱动开发**：遵循 BMAD 方法论的结构化开发
 
-## Quick Start
+## 快速开始
 
-### Installation
+### 安装
 
-#### Method 1: Add as Marketplace (Recommended)
+#### 方式一：添加 Marketplace（推荐）
 
 ```bash
-# In Claude Code, add this repository as a marketplace
+# 在 Claude Code 中添加此仓库作为 marketplace
 /plugin marketplace add kingoliang/polyglot-engineering-claude-plugin
 
-# Install the plugin
+# 安装插件
 /plugin install polyglot-engineering@kingoliang
 ```
 
-#### Method 2: Interactive Installation
+#### 方式二：交互式安装
 
 ```bash
-# Open plugin browser
+# 打开插件浏览器
 /plugin
 
-# Select "Browse Plugins" and find polyglot-engineering
+# 选择 "Browse Plugins"，找到 polyglot-engineering
 ```
 
-#### Method 3: Team Configuration
+#### 方式三：团队配置
 
-Add to your project's `.claude/settings.json`:
+在项目的 `.claude/settings.json` 中添加：
 
 ```json
 {
@@ -48,110 +48,110 @@ Add to your project's `.claude/settings.json`:
 }
 ```
 
-When team members trust the repository, the plugin installs automatically.
+团队成员信任仓库后，插件会自动安装。
 
-### Verify Installation
+### 验证安装
 
 ```bash
-# Check available commands
+# 查看可用命令
 /help
 
-# View installed plugins
+# 查看已安装插件
 /plugin
 ```
 
-### Usage
+### 使用示例
 
 ```bash
-# Plan a new feature
-/polyglot:plan Add user authentication with JWT
+# 规划新功能
+/polyglot:plan 添加 JWT 用户认证功能
 
-# Execute the plan
+# 执行计划
 /polyglot:work
 
-# Review code changes
+# 审查代码变更
 /polyglot:review staged
 
-# Generate documentation
+# 生成文档
 /polyglot:docs all
 
-# Triage review findings
+# 处理审查问题
 /polyglot:triage
 ```
 
-## Commands
+## 命令说明
 
-| Command | Description |
-|---------|-------------|
-| `/polyglot:plan` | Convert feature descriptions into detailed implementation plans |
-| `/polyglot:work` | Execute plans systematically with git worktree isolation |
-| `/polyglot:review` | Multi-agent code review with language-specific analysis |
-| `/polyglot:docs` | Generate comprehensive documentation from code |
-| `/polyglot:triage` | Interactively resolve review findings |
+| 命令 | 说明 |
+|------|------|
+| `/polyglot:plan` | 将功能描述转换为详细的实施计划 |
+| `/polyglot:work` | 使用 git worktree 隔离环境系统执行计划 |
+| `/polyglot:review` | 多代理代码审查，支持语言特定分析 |
+| `/polyglot:docs` | 从代码生成全面的文档 |
+| `/polyglot:triage` | 交互式处理审查发现的问题 |
 
-## Agents
+## 代理列表
 
-### Code Review Agents
+### 代码审查代理
 
-| Agent | Purpose |
-|-------|---------|
-| `typescript-reviewer` | TypeScript/JavaScript best practices, React patterns |
-| `python-reviewer` | Python patterns, Django/FastAPI/Flask review |
-| `java-reviewer` | Java patterns, Spring Boot, Jakarta EE review |
-| `architecture-strategist` | Design patterns, system architecture |
-| `security-sentinel` | OWASP vulnerabilities, security best practices |
-| `performance-oracle` | Performance bottlenecks, optimization |
-| `code-simplicity-reviewer` | Clean code, SOLID, maintainability |
+| 代理 | 用途 |
+|------|------|
+| `typescript-reviewer` | TypeScript/JavaScript 最佳实践、React 模式 |
+| `python-reviewer` | Python 模式、Django/FastAPI/Flask 审查 |
+| `java-reviewer` | Java 模式、Spring Boot、Jakarta EE 审查 |
+| `architecture-strategist` | 设计模式、系统架构 |
+| `security-sentinel` | OWASP 漏洞、安全最佳实践 |
+| `performance-oracle` | 性能瓶颈、优化建议 |
+| `code-simplicity-reviewer` | 清洁代码、SOLID、可维护性 |
 
-### Research Agents
+### 研究代理
 
-| Agent | Purpose |
-|-------|---------|
-| `codebase-researcher` | Analyze and map existing codebases |
-| `framework-researcher` | Research frameworks and libraries |
+| 代理 | 用途 |
+|------|------|
+| `codebase-researcher` | 分析和映射现有代码库 |
+| `framework-researcher` | 研究框架和库 |
 
-### Documentation Agents
+### 文档代理
 
-| Agent | Purpose |
-|-------|---------|
-| `architecture-doc-generator` | System architecture documentation |
-| `api-doc-generator` | API reference (OpenAPI/REST/GraphQL) |
-| `uml-generator` | UML diagrams in Mermaid format |
-| `readme-generator` | Project README files |
-| `manual-generator` | User manuals and guides |
+| 代理 | 用途 |
+|------|------|
+| `architecture-doc-generator` | 系统架构文档 |
+| `api-doc-generator` | API 参考（OpenAPI/REST/GraphQL） |
+| `uml-generator` | Mermaid 格式的 UML 图 |
+| `readme-generator` | 项目 README 文件 |
+| `manual-generator` | 用户手册和指南 |
 
-### Workflow Agents
+### 工作流代理
 
-| Agent | Purpose |
-|-------|---------|
-| `plan-executor` | Execute implementation plans |
-| `review-coordinator` | Coordinate multi-agent reviews |
+| 代理 | 用途 |
+|------|------|
+| `plan-executor` | 执行实施计划 |
+| `review-coordinator` | 协调多代理审查 |
 
-## Documentation Generation
+## 文档生成
 
-Generate various documentation types:
+生成各种类型的文档：
 
 ```bash
-# Generate all documentation
+# 生成所有文档
 /polyglot:docs all
 
-# Architecture documentation
+# 架构文档
 /polyglot:docs architecture
 
-# API reference
+# API 参考
 /polyglot:docs api
 
-# UML diagrams
+# UML 图
 /polyglot:docs uml
 
 # README
 /polyglot:docs readme
 
-# User manual
+# 用户手册
 /polyglot:docs manual
 ```
 
-### Output Structure
+### 输出结构
 
 ```
 docs/
@@ -170,39 +170,42 @@ docs/
     └── user-manual.md
 ```
 
-## Project Structure
+## 项目结构
 
 ```
 polyglot-engineering/
 ├── .claude-plugin/
-│   └── plugin.json          # Plugin configuration
+│   ├── plugin.json          # 插件配置
+│   └── marketplace.json     # Marketplace 配置
 ├── agents/
-│   ├── review/              # Code review agents
-│   ├── research/            # Research agents
-│   ├── docs/                # Documentation agents
-│   └── workflow/            # Workflow agents
-├── commands/                # Plugin commands
+│   ├── review/              # 代码审查代理
+│   ├── research/            # 研究代理
+│   ├── docs/                # 文档代理
+│   └── workflow/            # 工作流代理
+├── commands/                # 插件命令
 │   ├── plan.md
 │   ├── work.md
 │   ├── review.md
 │   ├── docs.md
 │   └── triage.md
-├── skills/                  # Reusable skills
+├── skills/                  # 可复用技能
 │   ├── docs-generator/
 │   ├── code-analysis/
 │   └── uml-generator/
-├── templates/               # Document templates
+├── templates/               # 文档模板
 │   ├── architecture/
 │   ├── api/
 │   ├── readme/
 │   ├── manual/
 │   └── prd/
-├── CLAUDE.md               # Plugin instructions
-├── CHANGELOG.md            # Version history
-└── README.md               # This file
+├── docs/                    # 使用文档
+│   └── USER_GUIDE.md
+├── CLAUDE.md               # 插件说明
+├── CHANGELOG.md            # 版本历史
+└── README.md               # 本文件
 ```
 
-## Supported Languages
+## 支持的语言
 
 ### TypeScript/JavaScript
 - React, Vue, Angular
@@ -221,37 +224,37 @@ polyglot-engineering/
 - Maven, Gradle
 - JUnit 5, Mockito
 
-## Philosophy
+## 设计理念
 
-This plugin follows the **Compounding Engineering** philosophy:
+本插件遵循 **复合工程 (Compounding Engineering)** 理念：
 
-> "Each unit of engineering work should make subsequent units of work easier—not harder."
+> "每一次工程工作都应该使后续工作变得更容易，而不是更困难。"
 
-The plugin achieves this through:
-1. **Planning**: Research-backed, detailed implementation plans
-2. **Execution**: Systematic, quality-verified implementation
-3. **Review**: Multi-agent, comprehensive code review
-4. **Documentation**: Auto-generated, always up-to-date docs
+通过以下方式实现：
+1. **规划**：基于研究的详细实施计划
+2. **执行**：系统化、质量验证的实现
+3. **审查**：多代理、全面的代码审查
+4. **文档**：自动生成、始终保持最新的文档
 
-## Contributing
+## 贡献指南
 
-Contributions are welcome! Please read our contributing guidelines before submitting PRs.
+欢迎贡献！提交 PR 前请阅读贡献指南。
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Update CHANGELOG.md
-5. Submit a pull request
+1. Fork 本仓库
+2. 创建功能分支
+3. 提交更改
+4. 更新 CHANGELOG.md
+5. 提交 Pull Request
 
-## License
+## 许可证
 
-MIT License - see [LICENSE](LICENSE) for details.
+MIT 许可证 - 详见 [LICENSE](LICENSE)
 
-## Acknowledgments
+## 致谢
 
-- Inspired by [compound-engineering-plugin](https://github.com/EveryInc/compound-engineering-plugin)
-- Documentation structure influenced by [BMAD Method](https://github.com/bmad-code-org/BMAD-METHOD)
+- 灵感来源：[compound-engineering-plugin](https://github.com/EveryInc/compound-engineering-plugin)
+- 文档结构参考：[BMAD Method](https://github.com/bmad-code-org/BMAD-METHOD)
 
 ---
 
-Made with [Claude Code](https://claude.ai)
+使用 [Claude Code](https://claude.ai) 构建

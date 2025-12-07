@@ -1,35 +1,35 @@
-# /polyglot:triage Command
+# /polyglot:triage 命令
 
-Interactively present review findings for approval with auto-fix capabilities.
+交互式展示审查发现的问题，支持自动修复功能。
 
-## Usage
+## 用法
 
 ```
-/polyglot:triage [review-reference]
+/polyglot:triage [审查引用]
 ```
 
-## Process
+## 流程
 
-### Phase 1: Load Findings
+### 阶段1：加载发现
 
-1. Load the most recent review or specified review
-2. Group findings by severity and file
-3. Prepare auto-fix suggestions where available
+1. 加载最近的审查或指定的审查
+2. 按严重程度和文件分组
+3. 准备可用的自动修复建议
 
-### Phase 2: Interactive Resolution
+### 阶段2：交互式处理
 
-Present each finding with options:
+展示每个发现及选项：
 
 ```markdown
-## Finding 1 of 10: [H1] Missing Error Handling
+## 发现 1/10：[H1] 缺少错误处理
 
-**Severity**: High
-**File**: `src/api/users.ts:45`
-**Agent**: typescript-reviewer
+**严重程度**：高
+**文件**：`src/api/users.ts:45`
+**代理**：typescript-reviewer
 
-**Issue**: Async function lacks try-catch block
+**问题**：异步函数缺少 try-catch
 
-**Current Code**:
+**当前代码**：
 ```typescript
 async function getUser(id: string) {
   const user = await db.users.find(id);
@@ -37,15 +37,15 @@ async function getUser(id: string) {
 }
 ```
 
-**Suggested Fix**:
+**建议修复**：
 ```typescript
 async function getUser(id: string) {
   try {
     const user = await db.users.find(id);
-    if (!user) throw new NotFoundError('User not found');
+    if (!user) throw new NotFoundError('用户不存在');
     return user;
   } catch (error) {
-    logger.error('Failed to get user', { id, error });
+    logger.error('获取用户失败', { id, error });
     throw error;
   }
 }
@@ -53,174 +53,174 @@ async function getUser(id: string) {
 
 ---
 
-**Actions**:
-[1] Apply Fix - Apply the suggested fix automatically
-[2] Skip - Skip this finding for now
-[3] Dismiss - Mark as won't fix with reason
-[4] Custom - Provide a custom fix
-[5] View Context - See more surrounding code
+**操作**：
+[1] 应用修复 - 自动应用建议的修复
+[2] 跳过 - 暂时跳过此发现
+[3] 忽略 - 标记为不修复并说明原因
+[4] 自定义 - 提供自定义修复
+[5] 查看上下文 - 查看更多周围代码
 ```
 
-### Phase 3: Resolution Tracking
+### 阶段3：处理跟踪
 
-Track all decisions:
+跟踪所有决策：
 
-| Finding | Decision | Applied |
-|---------|----------|---------|
-| H1 | Apply Fix | Yes |
-| H2 | Skip | - |
-| M1 | Dismiss: Intentional | - |
+| 发现 | 决策 | 已应用 |
+|------|------|--------|
+| H1 | 应用修复 | 是 |
+| H2 | 跳过 | - |
+| M1 | 忽略: 有意设计 | - |
 
-### Phase 4: Summary
+### 阶段4：摘要
 
 ```markdown
-# Triage Summary
+# Triage 摘要
 
-## Applied Fixes
-- [H1] Missing Error Handling in `users.ts`
-- [M2] Added type annotation in `auth.ts`
+## 已应用的修复
+- [H1] `users.ts` 中的错误处理
+- [M2] `auth.ts` 中添加类型注解
 
-## Skipped (For Later)
-- [H2] Performance optimization in `query.ts`
+## 已跳过（稍后处理）
+- [H2] `query.ts` 中的性能优化
 
-## Dismissed
-- [M1] Intentional pattern for compatibility
+## 已忽略
+- [M1] 为兼容性有意使用此模式
 
-## Remaining Issues
-| Severity | Count |
-|----------|-------|
-| High | 1 |
-| Medium | 2 |
+## 剩余问题
+| 严重程度 | 数量 |
+|----------|------|
+| 高 | 1 |
+| 中 | 2 |
 
-## Next Steps
-- Address skipped high priority item
-- Consider medium priority items
-- Re-run review after fixes: `/polyglot:review staged`
+## 后续步骤
+- 处理跳过的高优先级问题
+- 考虑中优先级问题
+- 修复后重新审查：`/polyglot:review staged`
 ```
 
-## Auto-Fix Capabilities
+## 自动修复能力
 
-### Supported Auto-Fixes
+### 支持的自动修复
 
-| Issue Type | Auto-Fix Available |
-|------------|-------------------|
-| Missing types | Yes |
-| Missing error handling | Template |
-| Unused imports | Yes |
-| Formatting issues | Yes |
-| Simple refactors | Yes |
-| Security issues | Case-by-case |
-| Architecture issues | No (requires design) |
+| 问题类型 | 自动修复 |
+|----------|---------|
+| 缺少类型 | 是 |
+| 缺少错误处理 | 模板 |
+| 未使用的导入 | 是 |
+| 格式问题 | 是 |
+| 简单重构 | 是 |
+| 安全问题 | 视情况 |
+| 架构问题 | 否（需要设计） |
 
-### Fix Templates
+### 修复模板
 
-When exact auto-fix isn't possible, provide templates:
+当无法精确自动修复时，提供模板：
 
 ```typescript
-// Template: Error Handling
+// 模板：错误处理
 try {
-  // Your code here
+  // 你的代码
 } catch (error) {
-  // Handle error
+  // 处理错误
   throw error;
 }
 ```
 
-## Batch Operations
+## 批量操作
 
-### Apply All Safe Fixes
+### 应用所有安全修复
 ```
 /polyglot:triage --apply-safe
 ```
-Applies all low-risk fixes (formatting, imports, simple types).
+应用所有低风险修复（格式、导入、简单类型）。
 
-### Skip All Low Priority
+### 跳过所有低优先级
 ```
 /polyglot:triage --skip-low
 ```
-Focuses on high and medium priority issues.
+聚焦于高和中优先级问题。
 
-### Review Only Critical
+### 仅处理严重问题
 ```
 /polyglot:triage --critical-only
 ```
-Shows only critical and high severity issues.
+仅显示严重和高严重程度问题。
 
-## Decision Guidelines
+## 决策指南
 
-### When to Apply
-- Clear improvement
-- No behavioral change
-- Well-understood pattern
-- Test coverage exists
+### 何时应用
+- 明确的改进
+- 无行为变更
+- 模式被充分理解
+- 有测试覆盖
 
-### When to Skip
-- Need more context
-- Uncertain about requirement
-- Needs discussion with team
-- Will address in related task
+### 何时跳过
+- 需要更多上下文
+- 不确定需求
+- 需要与团队讨论
+- 将在相关任务中处理
 
-### When to Dismiss
-- Intentional pattern
-- False positive
-- Not applicable to this codebase
-- Already addressed elsewhere
+### 何时忽略
+- 有意的模式
+- 误报
+- 不适用于此代码库
+- 已在其他地方处理
 
-## Integration
+## 集成
 
-### After Triage
+### Triage 之后
 ```bash
-# Run tests to verify fixes
+# 运行测试验证修复
 npm test
 
-# Re-run review
+# 重新审查
 /polyglot:review staged
 
-# Commit if all passing
+# 全部通过后提交
 git add -A
-git commit -m "fix: address code review findings"
+git commit -m "fix: 处理代码审查发现"
 ```
 
-### With Work Command
+### 与 Work 命令配合
 ```bash
-# During work execution
+# 执行工作期间
 /polyglot:work step-3
 
-# Quick review of step
+# 快速审查步骤
 /polyglot:review staged --quick
 
-# Triage any issues
+# 处理任何问题
 /polyglot:triage
 ```
 
-## Output Format
+## 输出格式
 
 ```markdown
-# Triage Complete
+# Triage 完成
 
-**Session**: Review from [date]
-**Total Findings**: 10
+**会话**：来自 [日期] 的审查
+**发现总数**：10
 
-## Resolution Summary
-| Action | Count |
-|--------|-------|
-| Applied | 5 |
-| Skipped | 3 |
-| Dismissed | 2 |
+## 处理摘要
+| 操作 | 数量 |
+|------|------|
+| 已应用 | 5 |
+| 已跳过 | 3 |
+| 已忽略 | 2 |
 
-## Verification
-- [ ] All tests passing
-- [ ] No new lint errors
-- [ ] Build successful
+## 验证
+- [ ] 所有测试通过
+- [ ] 无新 lint 错误
+- [ ] 构建成功
 
-## Commands Used
+## 使用的命令
 ```bash
 git add src/api/users.ts src/services/auth.ts
-git commit -m "fix: apply code review fixes
+git commit -m "fix: 应用代码审查修复
 
-- Add error handling to getUser
-- Add missing type annotations
-- Remove unused imports
+- 添加 getUser 错误处理
+- 添加缺失的类型注解
+- 移除未使用的导入
 "
 ```
 ```

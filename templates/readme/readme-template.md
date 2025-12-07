@@ -1,55 +1,55 @@
-# [Project Name]
+# [项目名称]
 
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Build Status](https://github.com/[user]/[repo]/actions/workflows/ci.yml/badge.svg)](https://github.com/[user]/[repo]/actions)
-[![Version](https://img.shields.io/badge/version-1.0.0-green.svg)](package.json)
+[![许可证](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![构建状态](https://github.com/[user]/[repo]/actions/workflows/ci.yml/badge.svg)](https://github.com/[user]/[repo]/actions)
+[![版本](https://img.shields.io/badge/version-1.0.0-green.svg)](package.json)
 
-[One-line description of what the project does]
+[一句话描述项目做什么]
 
-[Optional: screenshot or demo GIF]
+[可选：截图或演示 GIF]
 
-## Features
+## 特性
 
-- **Feature 1**: Brief description of what it does
-- **Feature 2**: Brief description of what it does
-- **Feature 3**: Brief description of what it does
-- **Feature 4**: Brief description of what it does
+- **特性 1**：功能简述
+- **特性 2**：功能简述
+- **特性 3**：功能简述
+- **特性 4**：功能简述
 
-## Quick Start
+## 快速开始
 
 ```bash
-# Clone the repository
+# 克隆仓库
 git clone https://github.com/[user]/[repo].git
 cd [repo]
 
-# Install dependencies
+# 安装依赖
 npm install
 
-# Run the application
+# 运行应用
 npm start
 ```
 
-## Prerequisites
+## 前置要求
 
-- [Requirement 1] version X.X or higher
-- [Requirement 2] version X.X or higher
-- [Optional requirement]
+- [要求 1] 版本 X.X 或更高
+- [要求 2] 版本 X.X 或更高
+- [可选要求]
 
-## Installation
+## 安装
 
-### Using npm
+### 使用 npm
 
 ```bash
 npm install [package-name]
 ```
 
-### Using yarn
+### 使用 yarn
 
 ```bash
 yarn add [package-name]
 ```
 
-### From source
+### 从源码安装
 
 ```bash
 git clone https://github.com/[user]/[repo].git
@@ -58,36 +58,36 @@ npm install
 npm run build
 ```
 
-## Usage
+## 使用方法
 
-### Basic Example
+### 基础示例
 
 ```typescript
 import { something } from '[package-name]';
 
-// Initialize
+// 初始化
 const instance = something({
   option1: 'value1',
   option2: true
 });
 
-// Use it
+// 使用
 const result = await instance.doSomething();
 console.log(result);
 ```
 
-### Advanced Example
+### 高级示例
 
 ```typescript
 import { something, configure } from '[package-name]';
 
-// Configure globally
+// 全局配置
 configure({
   apiKey: process.env.API_KEY,
   timeout: 5000
 });
 
-// Advanced usage
+// 高级用法
 const instance = something({
   option1: 'value1',
   advanced: {
@@ -102,19 +102,19 @@ const result = await instance.complexOperation({
 });
 ```
 
-## Configuration
+## 配置
 
-### Environment Variables
+### 环境变量
 
-| Variable | Description | Required | Default |
-|----------|-------------|----------|---------|
-| `APP_ENV` | Environment (development/production) | No | development |
-| `PORT` | Server port | No | 3000 |
-| `DATABASE_URL` | Database connection string | Yes | - |
+| 变量 | 描述 | 必填 | 默认值 |
+|------|------|------|--------|
+| `APP_ENV` | 环境（development/production） | 否 | development |
+| `PORT` | 服务器端口 | 否 | 3000 |
+| `DATABASE_URL` | 数据库连接字符串 | 是 | - |
 
-### Configuration File
+### 配置文件
 
-Create a `config.json` or `config.yaml` in the project root:
+在项目根目录创建 `config.json` 或 `config.yaml`：
 
 ```json
 {
@@ -125,22 +125,22 @@ Create a `config.json` or `config.yaml` in the project root:
 }
 ```
 
-## API Reference
+## API 参考
 
 ### `functionName(options)`
 
-Brief description of what the function does.
+函数功能简述。
 
-**Parameters:**
+**参数：**
 
-| Name | Type | Required | Description |
-|------|------|----------|-------------|
-| options.param1 | string | Yes | Description |
-| options.param2 | number | No | Description |
+| 名称 | 类型 | 必填 | 描述 |
+|------|------|------|------|
+| options.param1 | string | 是 | 描述 |
+| options.param2 | number | 否 | 描述 |
 
-**Returns:** `Promise<Result>`
+**返回值：** `Promise<Result>`
 
-**Example:**
+**示例：**
 
 ```typescript
 const result = await functionName({
@@ -148,114 +148,114 @@ const result = await functionName({
 });
 ```
 
-For complete API documentation, see [API Reference](docs/api.md).
+完整 API 文档请参阅 [API 参考](docs/api.md)。
 
-## Project Structure
+## 项目结构
 
 ```
 [project-name]/
-├── src/                  # Source code
-│   ├── index.ts          # Entry point
-│   ├── core/             # Core functionality
-│   ├── utils/            # Utility functions
-│   └── types/            # TypeScript types
-├── tests/                # Test files
-├── docs/                 # Documentation
-├── examples/             # Example code
-└── scripts/              # Build/utility scripts
+├── src/                  # 源代码
+│   ├── index.ts          # 入口文件
+│   ├── core/             # 核心功能
+│   ├── utils/            # 工具函数
+│   └── types/            # TypeScript 类型
+├── tests/                # 测试文件
+├── docs/                 # 文档
+├── examples/             # 示例代码
+└── scripts/              # 构建/工具脚本
 ```
 
-## Development
+## 开发
 
-### Setup
+### 环境搭建
 
 ```bash
-# Clone and install
+# 克隆并安装
 git clone https://github.com/[user]/[repo].git
 cd [repo]
 npm install
 
-# Start development server
+# 启动开发服务器
 npm run dev
 ```
 
-### Testing
+### 测试
 
 ```bash
-# Run all tests
+# 运行所有测试
 npm test
 
-# Run with coverage
+# 带覆盖率运行
 npm run test:coverage
 
-# Run specific test
+# 运行特定测试
 npm test -- --grep "test name"
 ```
 
-### Building
+### 构建
 
 ```bash
-# Build for production
+# 生产构建
 npm run build
 
-# Type checking
+# 类型检查
 npm run type-check
 ```
 
-### Linting
+### 代码检查
 
 ```bash
-# Run linter
+# 运行检查
 npm run lint
 
-# Fix linting issues
+# 修复问题
 npm run lint:fix
 ```
 
-## Contributing
+## 贡献
 
-Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) before submitting a Pull Request.
+欢迎贡献！提交 Pull Request 前请阅读我们的 [贡献指南](CONTRIBUTING.md)。
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+1. Fork 仓库
+2. 创建特性分支（`git checkout -b feature/amazing-feature`）
+3. 提交变更（`git commit -m 'Add amazing feature'`）
+4. 推送到分支（`git push origin feature/amazing-feature`）
+5. 开启 Pull Request
 
-### Development Guidelines
+### 开发准则
 
-- Follow the existing code style
-- Add tests for new features
-- Update documentation as needed
-- Keep commits atomic and well-described
+- 遵循现有代码风格
+- 为新功能添加测试
+- 按需更新文档
+- 保持提交原子化且描述清晰
 
-## Roadmap
+## 路线图
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
+- [ ] 特性 1
+- [ ] 特性 2
+- [ ] 特性 3
 
-See the [open issues](https://github.com/[user]/[repo]/issues) for a list of proposed features and known issues.
+查看 [open issues](https://github.com/[user]/[repo]/issues) 了解计划的功能和已知问题。
 
-## Changelog
+## 变更日志
 
-See [CHANGELOG.md](CHANGELOG.md) for a list of changes.
+查看 [CHANGELOG.md](CHANGELOG.md) 了解变更列表。
 
-## License
+## 许可证
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件。
 
-## Acknowledgments
+## 致谢
 
-- [Acknowledgment 1](link)
-- [Acknowledgment 2](link)
+- [致谢 1](链接)
+- [致谢 2](链接)
 
-## Support
+## 支持
 
-- Create a [GitHub Issue](https://github.com/[user]/[repo]/issues) for bug reports
-- Join our [Discord](link) for discussion
-- Email us at [email]
+- 创建 [GitHub Issue](https://github.com/[user]/[repo]/issues) 报告 bug
+- 加入我们的 [Discord](链接) 参与讨论
+- 发送邮件至 [邮箱]
 
 ---
 
-Made with [heart] by [Author/Team]
+由 [作者/团队] 用心打造
